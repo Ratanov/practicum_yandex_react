@@ -1,0 +1,8 @@
+.items {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  flex-grow: 1;
+  overflow: auto;
+}

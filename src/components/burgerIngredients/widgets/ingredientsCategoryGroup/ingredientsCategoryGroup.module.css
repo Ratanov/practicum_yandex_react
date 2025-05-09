@@ -1,0 +1,22 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  width: 100%;
+  gap: 24px;
+}
+
+.category__title {
+  width: 100%;
+  text-align: left;
+}
+
+.category__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  width: 100%;
+  gap: 24px;
+}
