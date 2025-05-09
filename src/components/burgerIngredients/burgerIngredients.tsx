@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { TIngredient } from '@shared/api';
-import { ingredientsApi } from '@shared/api';
-
+import { useMemo, useState } from 'react';
+import { Spinner } from '@components/spinner';
+import { useIngredients } from '@shared/contexts';
 import { ETabs } from './tabs.enum';
 import {
   IngredientsTabs,
@@ -10,49 +9,48 @@ import {
 } from './widgets';
 import classes from './burgerIngredients.module.css';
 
+const CATEGORIES = [
+  { key: ETabs.BUN, filterKey: 'buns' },
+  { key: ETabs.SAUCE, filterKey: 'sauces' },
+  { key: ETabs.MAIN, filterKey: 'mains' },
+] as const;
+
 export const BurgerIngredients = () => {
   const [activeTab, setActiveTab] = useState<ETabs>(ETabs.BUN);
-  const [ingredients, setIngredients] = useState<Array<TIngredient>>([]);
+  const { ingredients, isLoading } = useIngredients();
 
-  const buns = useMemo(
-    () => ingredients.filter((ingredient) => ingredient.type === ETabs.BUN),
-    [ingredients]
-  );
-
-  const sauces = useMemo(
-    () => ingredients.filter((ingredient) => ingredient.type === ETabs.SAUCE),
-    [ingredients]
-  );
-
-  const mains = useMemo(
-    () => ingredients.filter((ingredient) => ingredient.type === ETabs.MAIN),
-    [ingredients]
-  );
-
-  const loadAndSetIngredients = useCallback(async () => {
-    const ingredientsResponse = await ingredientsApi.getAll();
-
-    if (ingredientsResponse?.error) {
-      return;
-    }
-
-    if (ingredientsResponse?.data) {
-      setIngredients(ingredientsResponse.data);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadAndSetIngredients();
-  }, [loadAndSetIngredients]);
+  const filteredItems = useMemo(() => {
+    return {
+      buns:
+        ingredients?.filter((ingredient) => ingredient.type === ETabs.BUN) ||
+        [],
+      sauces:
+        ingredients?.filter((ingredient) => ingredient.type === ETabs.SAUCE) ||
+        [],
+      mains:
+        ingredients?.filter((ingredient) => ingredient.type === ETabs.MAIN) ||
+        [],
+    };
+  }, [ingredients]);
 
   return (
-    <section className={classes['ingredients']}>
+    <section className={classes.ingredients}>
       <ConstructorTitle />
       <IngredientsTabs activeTab={activeTab} setActiveTab={setActiveTab} />
-      <section className={classes['ingredients__container']}>
-        <IngredientsCategoryGroup items={buns} title={ETabs.BUN} />
-        <IngredientsCategoryGroup items={sauces} title={ETabs.SAUCE} />
-        <IngredientsCategoryGroup items={mains} title={ETabs.MAIN} />
+      <section className={classes.ingredients__content}>
+        {isLoading ? (
+          <Spinner description='Загрузка ингредиентов...' />
+        ) : (
+          <>
+            {CATEGORIES.map(({ key, filterKey }) => (
+              <IngredientsCategoryGroup
+                key={key}
+                items={filteredItems[filterKey]}
+                titleKey={key}
+              />
+            ))}
+          </>
+        )}
       </section>
     </section>
   );

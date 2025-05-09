@@ -1,41 +1,42 @@
-import { FC } from 'react';
-import classNames from 'classnames';
+import { FC } from "react";
+import { TIngredient } from "@shared/api";
+import { IngredientCard } from "../ingredientCard";
+import { ETabs } from "../../tabs.enum";
+import { titles } from "../../titles.const";
+import classNames from "classnames";
+import classes from "./ingredientsCategoryGroup.module.css";
 
-import { TIngredient } from '@shared/api';
-import { IngredientCard } from '../ingredientCard';
-import classes from './ingredientsCategoryGroup.module.css';
-
-interface IngredientsCategoryGroupProps {
-  title: string;
+type TIngredientsCategoryGroupProps = {
+  titleKey: ETabs;
   items: Array<TIngredient>;
-}
+};
 
-export const IngredientsCategoryGroup: FC<IngredientsCategoryGroupProps> = ({
+export const IngredientsCategoryGroup: FC<TIngredientsCategoryGroupProps> = ({
   items,
-  title,
+  titleKey,
 }) => {
   return (
-    <article className={classes['category']}>
+    <div className={classes.category}>
       <h3
         className={classNames(
-          'text text_type_main-medium',
-          classes['category__title']
+          classes.category__title,
+          "text text_type_main-medium"
         )}>
-        {title}
+        {titles[titleKey]}
       </h3>
-      <ul className={classes['category__list']}>
+      <ul className={classes.category__list}>
         {items?.length ? (
           items.map((item) => (
-            <li key={item._id}>
+            <li className={classes.category__item} key={item._id}>
               <IngredientCard ingredient={item} />
             </li>
           ))
         ) : (
-          <p className='text text_type_main-default text_color_inactive'>
-            К сожалению, {title.toLowerCase()} не найдены
+          <p className="text text_type_main-default text_color_inactive">
+            К сожалению, {titles[titleKey].toLowerCase()} не найдены
           </p>
         )}
       </ul>
-    </article>
+    </div>
   );
 };

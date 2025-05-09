@@ -2,7 +2,15 @@
 
 ## Здравствуйте!
 
-## Описание
+## Компоненты
+- App 
+- AppHeader
+- BurgerIngredients
+- BurgerConstructor
+- Modal
+- ModalOverlay
+- OrderDetails
+- IngredientsDetails
 
 ## Ссылки
 

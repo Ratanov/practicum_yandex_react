@@ -1,35 +1,29 @@
 import { FC } from 'react';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-
-import { ETabs } from '../../tabs.enum';
+import { ETabs } from '../../tabs.enum'
+import { titles } from '../../titles.const';
 import classes from './ingredientsTabs.module.css';
 
-interface IngredientsTabsProps {
+type TIngredientsTabsProps = {
   activeTab: string;
   setActiveTab: (value: ETabs) => void;
-}
+};
 
-const TABS = [
-  { value: ETabs.BUN, label: ETabs.BUN },
-  { value: ETabs.SAUCE, label: ETabs.SAUCE },
-  { value: ETabs.MAIN, label: ETabs.MAIN },
-];
+const TABS = [ETabs.BUN, ETabs.SAUCE, ETabs.MAIN];
 
-export const IngredientsTabs: FC<IngredientsTabsProps> = ({
+export const IngredientsTabs: FC<TIngredientsTabsProps> = ({
   setActiveTab,
   activeTab,
 }) => {
-  const handleTabClick = (value: string) => setActiveTab(value as ETabs);
-
   return (
-    <ul className={classes['tabs']}>
-      {TABS.map(({ value, label }) => (
-        <li key={value} className={classes['tabs__item']}>
+    <ul className={classes.tabs}>
+      {TABS.map((tab) => (
+        <li key={tab} className={classes.tabs__item}>
           <Tab
-            value={value}
-            active={value === activeTab}
-            onClick={handleTabClick}>
-            <p className='text text_type_main-default'>{label}</p>
+            value={tab}
+            active={tab === activeTab}
+            onClick={(value) => setActiveTab(value as ETabs)}>
+            <p className='text text_type_main-default'>{titles[tab]}</p>
           </Tab>
         </li>
       ))}

@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { DetailedHTMLProps, FC, HTMLAttributes } from 'react';
-
 import classes from './pageContainer.module.css';
 
 type TPageContainerProps = DetailedHTMLProps<

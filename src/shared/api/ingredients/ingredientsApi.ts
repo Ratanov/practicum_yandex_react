@@ -1,4 +1,4 @@
-import type { TIngredient, TApiResponse } from '..';
+import type { TIngredient, TApiResponse } from '@shared/api';
 
 const BASE_URL = 'https://norma.nomoreparties.space/api/ingredients';
 
@@ -9,7 +9,7 @@ export const ingredientsApi = {
    */
   getAll: async (): Promise<TApiResponse<Array<TIngredient>>> => {
     try {
-      const response = await fetch(`${BASE_URL}`);
+      const response = await fetch(BASE_URL);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

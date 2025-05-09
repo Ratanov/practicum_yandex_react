@@ -1,7 +1,10 @@
-import { AppHeader } from '@components/appHeader/appHeader';
-import { ConstructorPage } from '@pages/constructorPage/constructorPage';
+import { AppHeader } from '@components/appHeader';
+import { ConstructorPage } from '@pages/constructorPage';
 import classes from './app.module.scss';
-import { IngredientsDataProvider, SelectedIngredientsProvider } from '@shared/contexts';
+import {
+  IngredientsDataProvider,
+  SelectedIngredientsProvider,
+} from '@shared/contexts';
 
 export function App() {
   return (

@@ -21,12 +21,17 @@ export const IngredientsDataProvider: FC<PropsWithChildren> = ({
 
   const loadData = async () => {
     setIsLoading(true);
-    const data = await ingredientsApi.getAll();
+    try {
+      const data = await ingredientsApi.getAll();
 
-    if (data.success) {
-      setIngredients(ingredients);
+      if (data.success) {
+        setIngredients(data.data);
+      }
+    } catch (error) {
+      console.error('Failed to load ingredients:', error);
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {

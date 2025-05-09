@@ -1,0 +1,24 @@
+.ingredients {
+  width: 100%;
+  max-width: 536px;
+}
+
+.ingredients_empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--common-border-radius-s);
+  background: var(--background-element);
+  padding: 16px 24px;
+  min-height: 80px;
+}
+
+.ingredients_list {
+  max-height: 100%;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: auto;
+}

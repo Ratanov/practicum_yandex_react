@@ -1,11 +1,19 @@
+import { FC } from 'react';
+import { useSelectedIngredients } from '@shared/contexts';
+import { ConstructorTotal, Bun, Ingredients } from './widgets';
 import classes from './burgerConstructor.module.css';
-import { ConstructorItems, ConstructorTotal } from './widgets';
 
-export const BurgerConstructor = () => {
+export const BurgerConstructor: FC = () => {
+  const { selectedBun, selectedIngredients } = useSelectedIngredients();
+
   return (
     <section className={classes['constructor']}>
-      <ConstructorItems />
-      <ConstructorTotal count={400} />
+      <article className={classes['constructor__content']}>
+        <Bun bun={selectedBun} orientation='top' />
+        <Ingredients selectedIngredients={selectedIngredients} />
+        <Bun bun={selectedBun} orientation='bottom' />
+      </article>
+      <ConstructorTotal />
     </section>
   );
 };
