@@ -1,3 +1,3 @@
-export { IngredientsTabs } from './ingredientsTabs';
-export { ConstructorTitle } from './constructorTitle';
-export { IngredientsCategoryGroup } from './ingredientsCategoryGroup';
+export { IngredientsTabs } from './IngredientsTabs';
+export { ConstructorTitle } from './ConstructorTitle';
+export { IngredientsCategoryGroup } from './IngredientsCategoryGroup';

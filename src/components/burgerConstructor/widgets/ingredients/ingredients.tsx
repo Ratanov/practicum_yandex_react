@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { TSelectedIngredientsWithKey } from '@shared/contexts';
-import { Ingredient } from '../ingredient';
+import { Ingredient } from '../Ingredient';
 import classNames from 'classnames';
 import classes from './ingredients.module.css';
 

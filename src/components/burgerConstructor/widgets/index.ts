@@ -1,4 +1,4 @@
-export { Bun } from './bun';
-export { ConstructorTotal } from './constructorTotal';
-export { Ingredient } from './ingredient';
-export { Ingredients } from './ingredients';
+export { Bun } from './Bun';
+export { ConstructorTotal } from './ConstructorTotal';
+export { Ingredient } from './Ingredient';
+export { Ingredients } from './Ingredients';

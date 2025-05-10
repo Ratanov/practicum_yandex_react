@@ -1,1 +1,1 @@
-export { ModalOverlay } from './modalOverlay'
+export { ModalOverlay } from './ModalOverlay'

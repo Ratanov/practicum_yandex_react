@@ -1,1 +1,1 @@
-export { ModalWrapper } from './modalWrapper';
+export { ModalWrapper } from './ModalWrapper';

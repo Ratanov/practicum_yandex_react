@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { TIngredient } from "@shared/api";
-import { IngredientCard } from "../ingredientCard";
+import { IngredientCard } from "../IngredientCard";
 import { ETabs } from "../../tabs.enum";
 import { titles } from "../../titles.const";
 import classNames from "classnames";

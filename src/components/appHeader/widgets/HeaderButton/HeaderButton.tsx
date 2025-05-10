@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { TIconProps } from '@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/utils';
-
 import classNames from 'classnames';
 import classes from './headerButton.module.css';
 

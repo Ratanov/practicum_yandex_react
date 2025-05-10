@@ -1,1 +1,1 @@
-export { IngredientsTabs } from './ingredientsTabs';
+export { IngredientsTabs } from './IngredientsTabs';

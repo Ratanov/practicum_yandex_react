@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { ModalOverlay } from '@components/modalOverlay';
+import { ModalOverlay } from '@components/ModalOverlay';
 import { ModalWrapper, ModalHeader } from './widgets';
 import type { TModalProps } from '@shared/types';
 

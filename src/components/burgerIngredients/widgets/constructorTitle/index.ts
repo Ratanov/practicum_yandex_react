@@ -1,1 +1,1 @@
-export { ConstructorTitle } from './constructorTitle';
+export { ConstructorTitle } from './ConstructorTitle';

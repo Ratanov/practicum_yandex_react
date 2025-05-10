@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Spinner } from '@components/spinner';
+import { Spinner } from '@components/Spinner';
 import { useIngredients } from '@shared/contexts';
 import { ETabs } from './tabs.enum';
 import {

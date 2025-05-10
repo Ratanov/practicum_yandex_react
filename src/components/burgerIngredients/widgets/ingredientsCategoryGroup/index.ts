@@ -1,1 +1,1 @@
-export { IngredientsCategoryGroup } from './ingredientsCategoryGroup';
+export { IngredientsCategoryGroup } from './IngredientsCategoryGroup';

@@ -1,5 +1,5 @@
-import { AppHeader } from '@components/appHeader';
-import { ConstructorPage } from '@pages/constructorPage';
+import { AppHeader } from '@components/AppHeader';
+import { ConstructorPage } from '@pages/ConstructorPage';
 import classes from './app.module.scss';
 import {
   IngredientsDataProvider,

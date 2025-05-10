@@ -1,2 +1,2 @@
-export { ModalHeader } from './modalHeader';
-export { ModalWrapper } from './modalWrapper';
+export { ModalHeader } from './ModalHeader';
+export { ModalWrapper } from './ModalWrapper';

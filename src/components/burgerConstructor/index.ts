@@ -1,1 +1,1 @@
-export { BurgerConstructor } from './burgerCostructor'
+export { BurgerConstructor } from './BurgerCostructor'
