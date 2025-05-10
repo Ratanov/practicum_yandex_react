@@ -1,8 +1,16 @@
 import { FC, MouseEventHandler, useCallback, useEffect } from 'react';
+import classNames from 'classnames';
 import { TModalProps } from '@shared/types';
 import classes from './modalOverlay.module.css';
 
-export const ModalOverlay: FC<Pick<TModalProps, 'onClose'>> = ({ onClose }) => {
+type TModalOverlayProps = Pick<TModalProps, 'onClose'> & {
+  isVisible: boolean;
+};
+
+export const ModalOverlay: FC<TModalOverlayProps> = ({
+  onClose,
+  isVisible,
+}) => {
   const handleClick: MouseEventHandler<HTMLDivElement> = useCallback(
     (event) => {
       event.preventDefault();
@@ -22,11 +30,17 @@ export const ModalOverlay: FC<Pick<TModalProps, 'onClose'>> = ({ onClose }) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyPress);
-
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, [handleKeyPress]);
 
-  return <div className={classes.overlay} onClick={handleClick} />;
+  return (
+    <div
+      className={classNames(classes.overlay, {
+        [classes.overlay_visible]: isVisible,
+      })}
+      onClick={handleClick}
+    />
+  );
 };

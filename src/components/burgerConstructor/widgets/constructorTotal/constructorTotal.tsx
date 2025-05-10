@@ -35,9 +35,11 @@ export const ConstructorTotal: FC = () => {
 
   return (
     <>
-      <Modal isOpen={modalState} onClose={() => setModalState(false)}>
-        <OrderDetails />
-      </Modal>
+      {modalState && (
+        <Modal onClose={() => setModalState(false)}>
+          <OrderDetails />
+        </Modal>
+      )}
       <form onSubmit={formSubmit} className={classes.order}>
         <span
           className={classNames(

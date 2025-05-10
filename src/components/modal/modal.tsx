@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { ModalOverlay } from '@components/modalOverlay';
 import { ModalWrapper, ModalHeader } from './widgets';
@@ -6,21 +6,24 @@ import type { TModalProps } from '@shared/types';
 
 const modalRoot = document.getElementById('modals') as HTMLElement;
 
-export const Modal: FC<TModalProps> = ({
+export const Modal: FC<Omit<TModalProps, 'isOpen'>> = ({
   children,
-  isOpen,
   onClose,
   title,
 }) => {
-  if (!isOpen) return null;
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsVisible(true), 10);
+  }, []);
 
   return ReactDOM.createPortal(
     <>
-      <ModalWrapper>
+      <ModalWrapper isVisible={isVisible}>
         <ModalHeader onClose={onClose} title={title} />
         {children}
       </ModalWrapper>
-      <ModalOverlay onClose={onClose} />
+      <ModalOverlay isVisible={isVisible} onClose={onClose} />
     </>,
     modalRoot
   );

@@ -1,6 +1,10 @@
 .ingredients {
   width: 100%;
-  max-width: 536px;
+  /* max-width: 536px; */
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .ingredients_empty {

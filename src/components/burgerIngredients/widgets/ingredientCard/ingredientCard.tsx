@@ -59,12 +59,11 @@ export const IngredientCard: FC<TIngredientsProps> = ({ ingredient }) => {
           {ingredient.name}
         </p>
       </div>
-      <Modal
-        isOpen={modalState}
-        onClose={() => setModalState(false)}
-        title='Детали ингредиента'>
-        <IngredientsDetails ingredient={ingredient} />
-      </Modal>
+      {modalState && (
+        <Modal onClose={() => setModalState(false)} title='Детали ингредиента'>
+          <IngredientsDetails ingredient={ingredient} />
+        </Modal>
+      )}
     </>
   );
 };
