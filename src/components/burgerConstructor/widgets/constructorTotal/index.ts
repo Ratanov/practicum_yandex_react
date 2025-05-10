@@ -1,1 +1,0 @@
-export { ConstructorTotal } from './ConstructorTotal';

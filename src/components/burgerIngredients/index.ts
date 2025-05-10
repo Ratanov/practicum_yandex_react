@@ -1,1 +1,0 @@
-export { BurgerIngredients } from './BurgerIngredients';
