@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto 40px;
+  overflow: auto;
+}

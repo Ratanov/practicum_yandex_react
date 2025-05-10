@@ -1,0 +1,22 @@
+.order {
+  padding-inline: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.order__total {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.order__total > svg {
+  width: 36px;
+  height: 36px;
+}
