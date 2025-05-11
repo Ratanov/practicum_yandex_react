@@ -104,7 +104,7 @@ export const selectedIngredientsTest = [
     image_mobile: 'https://code.s3.yandex.net/react/code/meat-01-mobile.png',
     image_large: 'https://code.s3.yandex.net/react/code/meat-01-large.png',
     __v: 0,
-    __key: '954859dd-f895-40a7-85ac-d579af7f5f2a',
+    __key: '954859dd-f895-40a7-85ac-d579af7f5f2a4',
   },
   {
     _id: '643d69a5c3f7b9001cfa0944',
@@ -119,7 +119,7 @@ export const selectedIngredientsTest = [
     image_mobile: 'https://code.s3.yandex.net/react/code/sauce-03-mobile.png',
     image_large: 'https://code.s3.yandex.net/react/code/sauce-03-large.png',
     __v: 0,
-    __key: '0630d324-0838-486e-b4d1-84bd6e2308a0',
+    __key: '0630d324-0838-486e-b4d1-84bd6e2308a03',
   },
   {
     _id: '643d69a5c3f7b9001cfa093e',
@@ -134,7 +134,7 @@ export const selectedIngredientsTest = [
     image_mobile: 'https://code.s3.yandex.net/react/code/meat-03-mobile.png',
     image_large: 'https://code.s3.yandex.net/react/code/meat-03-large.png',
     __v: 0,
-    __key: '45c5a8ed-0c03-447c-8e1b-0c339153f70d',
+    __key: '45c5a8ed-0c03-447c-8e1b-0c339153f70d2',
   },
   {
     _id: '643d69a5c3f7b9001cfa0945',
@@ -149,7 +149,7 @@ export const selectedIngredientsTest = [
     image_mobile: 'https://code.s3.yandex.net/react/code/sauce-01-mobile.png',
     image_large: 'https://code.s3.yandex.net/react/code/sauce-01-large.png',
     __v: 0,
-    __key: '19f914f5-7bd8-46cd-b73a-6d0e375e0814',
+    __key: '19f914f5-7bd8-46cd-b73a-6d0e375e08141',
   },
 ];
 
