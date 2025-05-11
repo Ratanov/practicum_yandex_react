@@ -3,19 +3,19 @@ import { TIconProps } from '@ya.praktikum/react-developer-burger-ui-components/d
 import classNames from 'classnames';
 import classes from './headerButton.module.css';
 
-type THeaderButtonProps = {
+interface IHeaderButtonProps {
   Icon: FC<TIconProps>;
   title: string;
   isActive?: boolean;
-};
+}
 
-export const HeaderButton: FC<THeaderButtonProps> = ({
+export const HeaderButton: FC<IHeaderButtonProps> = ({
   Icon,
   title,
   isActive,
 }) => {
   const titleClassName = classNames('text text_type_main-default', {
-    'text_color_inactive': !isActive,
+    text_color_inactive: !isActive,
   });
 
   return (

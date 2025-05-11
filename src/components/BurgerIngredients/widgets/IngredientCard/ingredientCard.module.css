@@ -31,3 +31,7 @@
   min-height: 48px;
   text-align: center;
 }
+
+.card_drag {
+  opacity: 0.5;
+}

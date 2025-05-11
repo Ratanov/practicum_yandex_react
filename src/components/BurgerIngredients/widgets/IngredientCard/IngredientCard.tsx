@@ -1,27 +1,49 @@
 import { FC, useCallback, useMemo, useState } from 'react';
+import { useDrag } from 'react-dnd';
+import { useAppDispatch, useAppSelector } from '@shared/services/hooks';
+import { setIngredient } from '@shared/services/reducers/selectedIngredientsSlice';
 import {
   CurrencyIcon,
   Counter,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { useSelectedIngredients } from '@shared/contexts';
 import { TIngredient } from '@shared/api';
 import { IngredientsDetails, Modal } from '@components/index';
 import classNames from 'classnames';
 import classes from './ingredientCard.module.css';
 
-type TIngredientsProps = {
+interface IIngredientCardProps {
   ingredient: TIngredient;
-};
+}
 
-export const IngredientCard: FC<TIngredientsProps> = ({ ingredient }) => {
-  const [modalState, setModalState] = useState<boolean>(false);
-  const { selectedBun, selectedIngredients } = useSelectedIngredients();
+export const IngredientCard: FC<IIngredientCardProps> = ({ ingredient }) => {
+  const dispatch = useAppDispatch();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { selectedBun, selectedIngredients } = useAppSelector(
+    (state) => state.selectedIngredients
+  );
 
-  const handleClick = useCallback(() => {
-    setModalState(true);
-  }, []);
+  const [{ isDragging }, dragRef] = useDrag(() => ({
+    type: 'ingredient',
+    item: { ingredient },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  }));
 
-  const count = useMemo(() => {
+  const handleModalOpen = useCallback(
+    (item: TIngredient) => {
+      dispatch(setIngredient(item));
+      setIsModalOpen(true);
+    },
+    [dispatch]
+  );
+
+  const handleModalClose = useCallback(() => {
+    dispatch(setIngredient(null));
+    setIsModalOpen(false);
+  }, [dispatch]);
+
+  const ingredientCount = useMemo(() => {
     if (selectedBun && selectedBun._id === ingredient._id) {
       return 1;
     }
@@ -36,8 +58,13 @@ export const IngredientCard: FC<TIngredientsProps> = ({ ingredient }) => {
 
   return (
     <>
-      <div className={classes.card} onClick={handleClick}>
-        {count ? <Counter count={count} size='default' /> : null}
+      <div
+        ref={dragRef}
+        className={classNames(classes.card, isDragging && classes.card_drag)}
+        onClick={() => handleModalOpen(ingredient)}>
+        {!!ingredientCount && (
+          <Counter count={ingredientCount} size='default' />
+        )}
         <img
           src={ingredient.image}
           alt={`${ingredient.name} изображение`}
@@ -59,8 +86,8 @@ export const IngredientCard: FC<TIngredientsProps> = ({ ingredient }) => {
           {ingredient.name}
         </p>
       </div>
-      {modalState && (
-        <Modal onClose={() => setModalState(false)} title='Детали ингредиента'>
+      {isModalOpen && (
+        <Modal onClose={handleModalClose} title='Детали ингредиента'>
           <IngredientsDetails ingredient={ingredient} />
         </Modal>
       )}

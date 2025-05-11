@@ -2,11 +2,11 @@ import { FC } from 'react';
 import { donePng } from '@shared/img';
 import classes from './orderDetails.module.css';
 
-export const OrderDetails: FC = () => {
+export const OrderDetails: FC<{ orderNumber: number }> = ({ orderNumber }) => {
   return (
     <div className={classes.order}>
       <div className={classes.order__header}>
-        <h2 className='text text_type_digits-large'>034536</h2>
+        <h2 className='text text_type_digits-large'>{orderNumber}</h2>
         <p className='text text_type_main-medium'>идентификатор заказа</p>
       </div>
       <img src={donePng} alt='Иконка готового заказа' />

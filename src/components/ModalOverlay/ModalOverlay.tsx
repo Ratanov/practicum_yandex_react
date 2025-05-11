@@ -3,14 +3,11 @@ import classNames from 'classnames';
 import { TModalProps } from '@shared/types';
 import classes from './modalOverlay.module.css';
 
-type TModalOverlayProps = Pick<TModalProps, 'onClose'> & {
+interface IModalOverlayProps extends Pick<TModalProps, 'onClose'> {
   isVisible: boolean;
-};
+}
 
-export const ModalOverlay: FC<TModalOverlayProps> = ({
-  onClose,
-  isVisible,
-}) => {
+export const ModalOverlay: FC<IModalOverlayProps> = ({ onClose, isVisible }) => {
   const handleClick: MouseEventHandler<HTMLDivElement> = useCallback(
     (event) => {
       event.preventDefault();
@@ -29,9 +26,9 @@ export const ModalOverlay: FC<TModalOverlayProps> = ({
   );
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('keydown', handleKeyPress);
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener('keydown', handleKeyPress);
     };
   }, [handleKeyPress]);
 
@@ -41,6 +38,7 @@ export const ModalOverlay: FC<TModalOverlayProps> = ({
         [classes.overlay_visible]: isVisible,
       })}
       onClick={handleClick}
+      data-testid='modal-overlay'
     />
   );
 };

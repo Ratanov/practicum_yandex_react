@@ -1,6 +1,5 @@
 .ingredients {
   width: 100%;
-  /* max-width: 536px; */
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -15,6 +14,7 @@
   background: var(--background-element);
   padding: 16px 24px;
   min-height: 80px;
+  max-width: 536px;
 }
 
 .ingredients_list {

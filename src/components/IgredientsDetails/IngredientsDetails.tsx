@@ -2,25 +2,28 @@ import { FC } from 'react';
 import { TIngredient } from '@shared/api';
 import classes from './ingredientsDetails.module.css';
 
-type TNutritionValue = keyof Pick<TIngredient, 'calories' | 'proteins' | 'fat' | 'carbohydrates'>;
+type TNutritionValue = keyof Pick<
+  TIngredient,
+  'calories' | 'proteins' | 'fat' | 'carbohydrates'
+>;
 
-type TNutritionItem = {
+interface INutritionItem {
   title: string;
   value: TNutritionValue;
-};
+}
 
-const NUTRITION_ITEMS: TNutritionItem[] = [
+const NUTRITION_ITEMS: readonly INutritionItem[] = [
   { title: 'Калории, калл', value: 'calories' },
   { title: 'Белки, г', value: 'proteins' },
   { title: 'Жиры, г', value: 'fat' },
   { title: 'Углеводы, г', value: 'carbohydrates' },
 ] as const;
 
-type TIngredientDetailsProps = {
+interface IIngredientDetailsProps {
   ingredient: TIngredient;
-};
+}
 
-export const IngredientsDetails: FC<TIngredientDetailsProps> = ({
+export const IngredientsDetails: FC<IIngredientDetailsProps> = ({
   ingredient,
 }) => {
   return (

@@ -2,11 +2,11 @@ import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import classes from './modalWrapper.module.css';
 
-type TModalWrapperProps = PropsWithChildren<{
+interface IModalWrapperProps extends PropsWithChildren {
   isVisible: boolean;
-}>;
+}
 
-export const ModalWrapper: FC<TModalWrapperProps> = ({
+export const ModalWrapper: FC<IModalWrapperProps> = ({
   children,
   isVisible,
 }) => {

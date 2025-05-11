@@ -1,41 +1,75 @@
+import { FC, useCallback, useRef } from 'react';
+import { useDrop, useDrag } from 'react-dnd';
+import { useAppDispatch } from '@shared/services/hooks';
 import {
   DragIcon,
   ConstructorElement,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import {
-  TSelectedIngredientsWithKey,
-  useSelectedIngredients,
-} from '@shared/contexts';
-import { FC, useCallback } from 'react';
+  removeIngredient,
+  sortIngredients,
+} from '@shared/services/reducers/selectedIngredientsSlice';
+import { TSelectedIngredients } from '@shared/types';
 import classes from './ingredient.module.css';
 
-type TIngredientsProps = {
-  selectedIngredient: TSelectedIngredientsWithKey;
-};
+interface IIngredientsProps {
+  selectedIngredient: TSelectedIngredients;
+  currentIndex: number;
+}
 
-export const Ingredient: FC<TIngredientsProps> = ({ selectedIngredient }) => {
-  const { setSelectedIngredients } = useSelectedIngredients();
+export const Ingredient: FC<IIngredientsProps> = ({
+  selectedIngredient,
+  currentIndex,
+}) => {
+  const dispatch = useAppDispatch();
+  const elemRef = useRef<HTMLLIElement>(null);
 
-  const handleClose = useCallback(
-    (item: TSelectedIngredientsWithKey) =>
-      setSelectedIngredients?.((prev) => {
-        if (!prev || prev?.length === 1) {
-          return null;
-        }
+  const handleDragSort = useCallback(
+    (dragIndex: number, hoverIndex: number) => {
+      if (dragIndex === hoverIndex) return;
 
-        return prev.filter((prevItem) => prevItem.__key !== item.__key);
-      }),
-    [setSelectedIngredients]
+      dispatch(
+        sortIngredients({
+          fromIndex: dragIndex,
+          toIndex: hoverIndex,
+        })
+      );
+    },
+    [dispatch]
   );
 
+  const [, drop] = useDrop({
+    accept: 'constructor-ingredient',
+    hover(draggedItem: { index: number }) {
+      handleDragSort(draggedItem.index, currentIndex);
+      draggedItem.index = currentIndex;
+    },
+  });
+
+  const [, drag] = useDrag({
+    type: 'constructor-ingredient',
+    item: { index: currentIndex },
+  });
+
+  drag(drop(elemRef));
+
+  const handleRemoveIngredient = useCallback(
+    (key: string) => {
+      dispatch(removeIngredient(key));
+    },
+    [dispatch]
+  );
+
+  const { name, price, image, __key } = selectedIngredient;
+
   return (
-    <li className={classes.ingredient}>
+    <li ref={elemRef} className={classes.ingredient}>
       <DragIcon type='primary' />
       <ConstructorElement
-        price={selectedIngredient.price}
-        text={selectedIngredient.name}
-        thumbnail={selectedIngredient.image}
-        handleClose={() => handleClose(selectedIngredient)}
+        price={price}
+        text={name}
+        thumbnail={image}
+        handleClose={() => handleRemoveIngredient(__key)}
       />
     </li>
   );
