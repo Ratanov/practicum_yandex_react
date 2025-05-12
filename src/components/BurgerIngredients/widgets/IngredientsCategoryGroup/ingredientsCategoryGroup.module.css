@@ -1,0 +1,25 @@
+.category {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.category__title {
+  width: 100%;
+  text-align: left;
+}
+
+.category__list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.category__item {
+  flex-basis: 270px;
+}

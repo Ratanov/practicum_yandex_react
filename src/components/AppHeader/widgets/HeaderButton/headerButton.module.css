@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+  border-radius: 40px;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: 0.075s all;
+  cursor: pointer;
+}
+
+.button_disabled {
+  cursor: not-allowed;
+}
+
+.button:hover {
+  color: var(--text-primary);
+}

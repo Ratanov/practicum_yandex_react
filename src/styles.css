@@ -1,0 +1,29 @@
+:root {
+  --text-primary: #f2f2f3;
+  --text-secondary: #8585ad;
+  --max-content-width: 1240px;
+  --scroll-bg: #2f2f37;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: var(--text-primary);
+  scrollbar-width: 8px !important;
+  scrollbar-color: #8585ad #2f2f37;
+  scroll-margin: 0;
+}
+
+*::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+body {
+  background: #131316;
+}
+
+li {
+  list-style: none;
+}
