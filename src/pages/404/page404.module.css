@@ -1,0 +1,6 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: render 0.2s ease;
+}

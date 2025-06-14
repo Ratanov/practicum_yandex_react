@@ -6,3 +6,15 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+.main {
+  // flex: 1;
+  // padding: 20px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}

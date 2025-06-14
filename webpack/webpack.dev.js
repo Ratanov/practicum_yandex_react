@@ -4,6 +4,11 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 module.exports = {
 	mode: 'development',
 	devtool: 'eval-source-map',
+	output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].bundle.js',
+        publicPath: '/'
+    },
 	devServer: {
 		historyApiFallback: true,
 		static: path.resolve(__dirname, './dist'), // путь, куда "смотрит" режим разработчика

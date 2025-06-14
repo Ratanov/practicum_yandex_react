@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { TIngredient } from '@shared/api';
+import { TIngredient } from '@shared/types';
 import classes from './ingredientsDetails.module.css';
 
 type TNutritionValue = keyof Pick<

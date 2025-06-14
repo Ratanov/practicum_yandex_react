@@ -1,0 +1,71 @@
+.navigation {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 80px;
+  min-width: 320px;
+  width: 320px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  animation: slide 0.1s ease;
+}
+
+.item_delay_1 {
+  animation-duration: 0.2s;
+}
+
+.item_delay_2 {
+  animation-duration: 0.3s;
+}
+
+.item_delay_3 {
+  animation-duration: 0.4s;
+}
+
+.link {
+  text-decoration: none;
+  transition: color 0.1s ease;
+  cursor: pointer;
+}
+
+.button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.1s ease;
+}
+
+.link:hover,
+.button:hover {
+  color: var(--text-primary-color);
+}
+
+.description {
+  animation: slide 0.4s ease-out;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

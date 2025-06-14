@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__text {
+  text-align: center;
+}
+
+.footer__link {
+  color: #4c4cff;
+  text-decoration: none;
+  transition: color 0.075s ease;
+}
+
+.footer__link:hover {
+  color: #4747de;
+}
