@@ -2,15 +2,32 @@
 
 ## Здравствуйте!
 
+## Страницы
+- 404 
+- Constructor (Home)
+- ForgotPassword
+- Ingredient
+- Login
+- Profile
+- Register
+- ResetPassword
+
 ## Компоненты
-- App 
-- AppHeader
-- BurgerIngredients
+- AppHeader 
 - BurgerConstructor
+- BurgerIngredients
+- Forms (ForgotPasswordForm, LoginForm, ProfileForm, RegisterForm, ResetPasswordForm)
+- IgredientsDetails
 - Modal
+- ModalIngredientDetails
 - ModalOverlay
 - OrderDetails
-- IngredientsDetails
+- PageContainer
+- ProfileNavigation
+- ProfileRouteWrapper
+- ProtectedRouteElement
+- RouteWrapper
+- Spinner
 
 ## Ссылки
 
