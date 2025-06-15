@@ -29,6 +29,8 @@
 - RouteWrapper
 - Spinner
 
+## TypeScript
+
 ## Ссылки
 
 [Развёрнутое приложение](https://yandex-react.netlify.app/)
