@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { ingredientsApi, TApiOrderResponse } from '@shared/api';
+import { ingredientsApi } from '@shared/api';
+import { TOrderResponse } from '@shared/types'
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface IOrderState {
   isLoading: boolean;
-  order: TApiOrderResponse['order'] | null;
+  order: TOrderResponse['order'] | null;
   orderItems: Array<string>;
   error: string | null;
   name: string | null;
@@ -43,7 +44,7 @@ const orderSlice = createSlice({
       })
       .addCase(
         postOrder.fulfilled,
-        (state, action: PayloadAction<TApiOrderResponse>) => {
+        (state, action: PayloadAction<TOrderResponse>) => {
           state.order = action.payload.order;
           state.name = action.payload?.name ?? null;
           state.error = null;

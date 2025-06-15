@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
   BurgerIcon,
   ListIcon,
@@ -15,10 +16,30 @@ enum EHeaderButton {
   PROFILE = 'Личный кабинет',
 }
 
+const paths = {
+  '/': EHeaderButton.CONSTRUCTOR,
+  '/orders': EHeaderButton.ORDERS,
+  '/profile': EHeaderButton.PROFILE,
+};
+
 export const AppHeader = () => {
-  const [activeButton, setActiveButton] = useState<EHeaderButton>(
-    EHeaderButton.CONSTRUCTOR
-  );
+  const location = useLocation();
+
+  const activeButton = useMemo(() => {
+    const { pathname } = location;
+
+    if (pathname === '/') {
+      return paths['/'];
+    }
+
+    if (pathname.startsWith('/orders')) {
+      return paths['/orders'];
+    }
+
+    if (pathname.startsWith('/profile')) {
+      return paths['/profile'];
+    }
+  }, [location]);
 
   return (
     <header className={classes['header']}>
@@ -34,6 +55,7 @@ export const AppHeader = () => {
                 isActive={EHeaderButton.CONSTRUCTOR === activeButton}
                 Icon={BurgerIcon}
                 title={EHeaderButton.CONSTRUCTOR}
+                route='/'
               />
             </li>
             <li className={classes['header__item']}>
@@ -41,12 +63,15 @@ export const AppHeader = () => {
                 isActive={EHeaderButton.ORDERS === activeButton}
                 Icon={ListIcon}
                 title={EHeaderButton.ORDERS}
+                route='/orders'
               />
             </li>
           </div>
 
           <li className={classes['header__item']}>
-            <Logo />
+            <Link to='/'>
+              <Logo />
+            </Link>
           </li>
 
           <li
@@ -58,6 +83,7 @@ export const AppHeader = () => {
               isActive={EHeaderButton.PROFILE === activeButton}
               Icon={ProfileIcon}
               title={EHeaderButton.PROFILE}
+              route='/profile'
             />
           </li>
         </ul>

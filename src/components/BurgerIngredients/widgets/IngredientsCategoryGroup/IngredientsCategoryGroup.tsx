@@ -1,5 +1,5 @@
 import { forwardRef, memo } from 'react';
-import { TIngredient } from '@shared/api';
+import { TIngredient } from '@shared/types';
 import { IngredientCard } from '../IngredientCard';
 import { ETabs } from '../../tabs.enum';
 import { titles } from '../../titles.const';

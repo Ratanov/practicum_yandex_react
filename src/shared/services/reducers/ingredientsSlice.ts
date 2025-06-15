@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { ingredientsApi, TApiResponse, TIngredient } from '@shared/api';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { ingredientsApi } from '@shared/api';
+import { TApiResponse, TIngredient } from '@shared/types'
 
 interface IIngredientsState {
   isLoading: boolean;

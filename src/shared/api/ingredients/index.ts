@@ -1,1 +1,0 @@
-export { ingredientsApi } from './ingredientsApi';

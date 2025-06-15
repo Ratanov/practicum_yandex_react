@@ -14,9 +14,11 @@ import {
 import { Modal, OrderDetails } from '@components/index';
 import classNames from 'classnames';
 import classes from './constructorTotal.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export const ConstructorTotal: FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
   const { selectedBun, selectedIngredients } = useSelector(
     (state: RootState) => state.selectedIngredients
@@ -24,6 +26,7 @@ export const ConstructorTotal: FC = () => {
   const { isLoading, name, error, order, orderItems } = useAppSelector(
     (state) => state.order
   );
+  const { isAuth } = useAppSelector((state) => state.user);
 
   const createOrder = useCallback(async (orderItems: string[]) => {
     try {
@@ -38,8 +41,12 @@ export const ConstructorTotal: FC = () => {
     }
   }, []);
 
-  const formSubmit: FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
+  const formSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    if (!isAuth) {
+      navigate('/login');
+      return;
+    }
     createOrder(orderItems);
   };
 
