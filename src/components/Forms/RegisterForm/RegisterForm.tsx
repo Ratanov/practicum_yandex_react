@@ -1,7 +1,7 @@
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useAppDispatch } from '@shared/services/hooks';
 import { registerUser } from '@shared/services/reducers/userSlice';
-import { useForm, useEditableInput, useUserRedirect } from '@shared/hooks';
+import { useForm, useEditableInput, useUserRedirect } from '@shared/services/hooks';
 import { FormFooter, FormTitle, PrimaryButton } from '../widgets';
 import type { FormEventHandler, FC, ComponentProps } from 'react';
 import styles from '../forms.module.css';

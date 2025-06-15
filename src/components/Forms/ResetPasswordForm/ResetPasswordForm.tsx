@@ -4,7 +4,7 @@ import { useAppDispatch } from '@shared/services/hooks';
 import { resetPassword } from '@shared/services/reducers';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { FormFooter, FormTitle, PrimaryButton } from '../widgets';
-import { useForm, useEditableInput } from '@shared/hooks';
+import { useForm, useEditableInput } from '@shared/services/hooks';
 import styles from '../forms.module.css';
 
 const navigationConfig: ComponentProps<typeof FormFooter>['data'] = [

@@ -5,9 +5,11 @@ import classes from './routeWrapper.module.css';
 
 export const RouteWrapper: FC = () => {
   return (
-    <main className={classes['route-wrapper']}>
+    <>
       <AppHeader />
-      <Outlet />
-    </main>
+      <main className={classes['route-wrapper']}>
+        <Outlet />
+      </main>
+    </>
   );
 };

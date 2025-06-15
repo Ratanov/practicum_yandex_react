@@ -2,7 +2,7 @@ import type { ComponentProps, FC, FormEventHandler } from 'react';
 import { useAppDispatch } from '@shared/services/hooks';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { FormFooter, FormTitle, PrimaryButton } from '../widgets';
-import { useForm, useEditableInput, useUserRedirect } from '@shared/hooks';
+import { useForm, useEditableInput, useUserRedirect } from '@shared/services/hooks';
 import { loginUser } from '@shared/services/reducers';
 import styles from '../forms.module.css';
 

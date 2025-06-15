@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useAppDispatch, useAppSelector } from '@shared/services/hooks';
 import { forgotPassword } from '@shared/services/reducers/passwordSlice';
-import { useForm } from '@shared/hooks';
+import { useForm } from '@shared/services/hooks';
 import { FormFooter, FormTitle, PrimaryButton } from '../widgets';
 
 import styles from '../forms.module.css';

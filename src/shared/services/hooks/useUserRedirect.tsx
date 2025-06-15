@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../services/hooks';
+import { useAppSelector } from '.';
 
 export const useUserRedirect = () => {
   const navigate = useNavigate();

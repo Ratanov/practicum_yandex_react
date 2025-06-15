@@ -2,7 +2,7 @@ import { useEffect, useState, FC, FormEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Spinner } from '@components/index';
-import { useForm, useEditableInput } from '@shared/hooks';
+import { useForm, useEditableInput } from '@shared/services/hooks';
 import { userApi } from '@shared/api';
 import styles from '../forms.module.css';
 
