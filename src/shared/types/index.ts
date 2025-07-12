@@ -1,3 +1,5 @@
+export type { TBaseError } from './baseError.type';
+export type { TFeedOrderItem } from './feedOrderItem.type';
 export type { TIngredient } from './ingredient.type';
 export type { TModalProps } from './modal.type';
 export type { TSelectedIngredients } from './selectedIngredients.type';
@@ -13,6 +15,7 @@ export type { TTokenRequest } from './request/tokenRequest.type'
 
 export type { TApiResponse } from './response/apiResponse.type';
 export type { TAuthResponse } from './response/authResponse.type';
+export type { TIngredientResponse } from './response/ingredientResponse.type';
 export type { TMessageResponse } from './response/messageResponse.type';
 export type { TOrderResponse } from './response/orderResponse.type';
 export type { TUpdateResponse } from './response/updateResponse.type';

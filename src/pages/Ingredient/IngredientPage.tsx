@@ -6,15 +6,14 @@ import { IngredientsDetails, PageContainer } from '@components/index';
 
 export const IngredientPage: FC = () => {
   const { id } = useParams();
-  const { ingredients } = useAppSelector((state) => state.ingredients);
+  const { ingredientsHash } = useAppSelector((state) => state.ingredients);
 
   const selectedIngredient = useMemo(() => {
-    const foundedIngredient = ingredients.find(
-      (ingredient) => ingredient._id === id
-    );
-
-    return foundedIngredient;
-  }, [id, ingredients]);
+    if (typeof id === 'string') {
+      return ingredientsHash[id];
+    }
+    return null;
+  }, [id, ingredientsHash]);
 
   return (
     <PageContainer className='flex-col-center'>

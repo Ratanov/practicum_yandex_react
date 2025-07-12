@@ -1,11 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./root";
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer, { type RootState } from './root';
+import { feedWsMiddleware } from '../middlewares/feedMiddleware';
+import { userWsMiddleware } from '../middlewares/userMiddleware';
+
+declare const process: {
+  env: {
+    NODE_ENV: string;
+  };
+};
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false })
+      .concat(feedWsMiddleware)
+      .concat(userWsMiddleware),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+export type { RootState };
 export type AppDispatch = typeof store.dispatch;
 export default store;
