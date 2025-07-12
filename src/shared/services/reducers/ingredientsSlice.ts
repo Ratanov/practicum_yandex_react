@@ -1,17 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { ingredientsApi } from '@shared/api';
-import { TApiResponse, TIngredient } from '@shared/types'
+import { TApiResponse, TIngredient } from '@shared/types';
 
 interface IIngredientsState {
   isLoading: boolean;
   ingredients: Array<TIngredient>;
+  ingredientsHash: Record<string, TIngredient>;
   error: string | null;
 }
 
 const initialState: IIngredientsState = {
   isLoading: false,
   ingredients: [],
+  ingredientsHash: {},
   error: null,
 };
 
@@ -36,7 +38,15 @@ const ingredientsSlice = createSlice({
           state: IIngredientsState,
           action: PayloadAction<TApiResponse<Array<TIngredient>>>
         ) => {
-          state.ingredients = action.payload?.data ?? [];
+          if (action.payload.success) {
+            state.ingredients = action.payload?.data ?? [];
+            state.ingredientsHash = action.payload.data.reduce((prev, curr) => {
+              prev[curr._id] = curr;
+
+              return prev;
+            }, {} as Record<string, TIngredient>);
+          }
+
           state.isLoading = false;
         }
       )

@@ -6,6 +6,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  animation: render 0.3s ease;
 }
 
 .ingredients__title {
@@ -23,4 +24,15 @@
   justify-content: flex-start;
   margin-top: 40px;
   gap: 40px;
+}
+
+@keyframes render {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -32,7 +32,7 @@ export const ProfileNavigation: FC = () => {
   }, [location]);
 
   const handleLogout = async () => {
-    const token = getCookie("refreshToken");
+    const token = getCookie('refreshToken');
     await dispatch(logoutUser({ token }));
     navigate('/');
   };
@@ -42,7 +42,7 @@ export const ProfileNavigation: FC = () => {
       <ul className={styles.list}>
         {[
           { path: routes.profile, text: 'Профиль', delay: 1 },
-          { path: 'orders', text: 'История заказов', delay: 2 },
+          { path: routes.orders, text: 'История заказов', delay: 2 }, // Используем routes.orders вместо 'orders'
         ].map(({ path, text, delay }) => (
           <li
             key={path}

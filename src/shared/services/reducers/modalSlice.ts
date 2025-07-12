@@ -15,11 +15,20 @@ const ingredientModalSlice = createSlice({
   name: 'ingredientModal',
   initialState,
   reducers: {
-    setOpen: (state, action: PayloadAction<boolean>) => {
+    setModalIngredient: (
+      state,
+      action: PayloadAction<IIngredientModalState['ingredient']>
+    ) => {
+      state.ingredient = action.payload;
+    },
+    setOpen: (
+      state,
+      action: PayloadAction<IIngredientModalState['isOpen']>
+    ) => {
       state.isOpen = action.payload;
     },
   },
 });
 
-export const { setOpen } = ingredientModalSlice.actions;
+export const { setModalIngredient, setOpen } = ingredientModalSlice.actions;
 export default ingredientModalSlice.reducer;

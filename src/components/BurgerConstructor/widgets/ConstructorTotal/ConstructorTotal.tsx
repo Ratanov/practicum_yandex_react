@@ -23,12 +23,12 @@ export const ConstructorTotal: FC = () => {
   const { selectedBun, selectedIngredients } = useSelector(
     (state: RootState) => state.selectedIngredients
   );
-  const { isLoading, name, error, order, orderItems } = useAppSelector(
+  const { isLoading, name, error, number, orderItems } = useAppSelector(
     (state) => state.order
   );
   const { isAuth } = useAppSelector((state) => state.user);
 
-  const createOrder = useCallback(async (orderItems: string[]) => {
+  const handleSubmit = useCallback(async (orderItems: string[]) => {
     try {
       await dispatch(postOrder({ ingredients: orderItems }));
 
@@ -47,7 +47,7 @@ export const ConstructorTotal: FC = () => {
       navigate('/login');
       return;
     }
-    createOrder(orderItems);
+    handleSubmit(orderItems);
   };
 
   const totalPrice = useMemo(() => {
@@ -70,8 +70,8 @@ export const ConstructorTotal: FC = () => {
     <>
       {modalState && (
         <Modal title={name || ''} onClose={() => setModalState(false)}>
-          {!error && order ? (
-            <OrderDetails orderNumber={order.number} />
+          {!error && number ? (
+            <OrderDetails orderNumber={number} />
           ) : (
             error
           )}

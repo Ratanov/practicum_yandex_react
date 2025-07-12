@@ -1,0 +1,21 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+}
+
+.orders__list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(10, auto);
+  gap: 8px;
+}
+
+.orders__item {
+  list-style: none;
+}
+
+.orders__item_done {
+  color: #00cccc;
+}

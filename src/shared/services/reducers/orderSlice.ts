@@ -1,27 +1,27 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { ingredientsApi } from '@shared/api';
-import { TOrderResponse } from '@shared/types'
+import { TOrderResponse } from '@shared/types';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface IOrderState {
   isLoading: boolean;
-  order: TOrderResponse['order'] | null;
   orderItems: Array<string>;
   error: string | null;
   name: string | null;
+  number: number | null | undefined;
 }
 
 const initialState: IOrderState = {
   isLoading: false,
   name: null,
   error: null,
-  order: null,
   orderItems: [],
+  number: null,
 };
 
 export const postOrder = createAsyncThunk(
   'ingredients/post',
-  ingredientsApi.postOrder
+  ingredientsApi.createOrder
 );
 
 const orderSlice = createSlice({
@@ -40,15 +40,17 @@ const orderSlice = createSlice({
       .addCase(postOrder.pending, (state) => {
         state.isLoading = true;
         state.error = null;
-        state.order = null;
+        state.number = null;
       })
       .addCase(
         postOrder.fulfilled,
         (state, action: PayloadAction<TOrderResponse>) => {
-          state.order = action.payload.order;
-          state.name = action.payload?.name ?? null;
-          state.error = null;
-          state.isLoading = false;
+          if (action.payload.success) {
+            state.number = action.payload?.order?.number;
+            state.name = action.payload?.name ?? null;
+            state.error = null;
+            state.isLoading = false;
+          }
         }
       )
       .addCase(postOrder.rejected, (state, action) => {

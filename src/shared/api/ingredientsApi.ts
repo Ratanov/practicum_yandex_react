@@ -20,7 +20,7 @@ export const ingredientsApi = {
    * Отправка заказа
    * @throws {Error} При ошибке сети или невалидном ответе
    */
-  postOrder: (data: TOrderRequest) =>
+  createOrder: (data: TOrderRequest) =>
     Api.request<TOrderResponse>({
       url: 'orders',
       method: 'POST',

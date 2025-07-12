@@ -11,7 +11,7 @@ export const ProtectedRouteElement: FC<{ element: React.ReactNode }> = ({
   const from = location.state?.from || location.pathname || '/';
 
   if (initLoading) {
-    return <Spinner description='Загрузка профиля пользователя...' />; // Здесь можете использовать ваш компонент прелоадера
+    return <Spinner description='Загрузка профиля пользователя...' />;
   }
 
   if (!isAuth) {

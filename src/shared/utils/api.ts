@@ -10,43 +10,56 @@ type TApiRequest = {
 };
 
 export class Api {
-  private static BASE_URL = 'https://norma.nomoreparties.space/api';
+  private static PROTOCOL = {
+    https: 'https://',
+    wss: 'wss://',
+  };
+  private static BASE_URL = 'norma.nomoreparties.space';
+
+  private static BASE_API: Record<keyof typeof this.PROTOCOL, string> = {
+    https: this.PROTOCOL.https + this.BASE_URL,
+    wss: this.PROTOCOL.wss + this.BASE_URL,
+  };
 
   static readonly endpoints = {
     ingredients: {
-      url: `${this.BASE_URL}/ingredients`,
+      url: `${this.BASE_API.https}/api/ingredients`,
       protected: false,
     },
     orders: {
-      url: `${this.BASE_URL}/orders`,
+      url: `${this.BASE_API.https}/api/orders`,
       protected: true,
     },
     login: {
-      url: `${this.BASE_URL}/auth/login`,
+      url: `${this.BASE_API.https}/api/auth/login`,
       protected: false,
     },
     register: {
-      url: `${this.BASE_URL}/auth/register`,
+      url: `${this.BASE_API.https}/api/auth/register`,
       protected: false,
     },
     logout: {
-      url: `${this.BASE_URL}/auth/logout`,
+      url: `${this.BASE_API.https}/api/auth/logout`,
       protected: true,
     },
     token: {
-      url: `${this.BASE_URL}/auth/token`,
+      url: `${this.BASE_API.https}/api/auth/token`,
       protected: false,
     },
     user: {
-      url: `${this.BASE_URL}/auth/user`,
+      url: `${this.BASE_API.https}/api/auth/user`,
       protected: true,
     },
     forgotPassword: {
-      url: `${this.BASE_URL}/password-reset`,
+      url: `${this.BASE_API.https}/api/password-reset`,
       protected: false,
     },
     resetPassword: {
-      url: `${this.BASE_URL}/password-reset/reset`,
+      url: `${this.BASE_API.https}/api/password-reset/reset`,
+      protected: false,
+    },
+    ws: {
+      url: `${this.BASE_API.wss}/orders/all`,
       protected: false,
     },
   } as const;
@@ -61,7 +74,7 @@ export class Api {
         body: JSON.stringify({ token: refreshToken } as TTokenRequest),
       });
 
-      const result = await checkResponse<TUpdateResponse>(refresh);
+      const result = await checkResponse.http<TUpdateResponse>(refresh);
 
       if (result.success) {
         setCookie('accessToken', result.accessToken, 1);
@@ -83,7 +96,8 @@ export class Api {
     if (endpoint.protected) {
       try {
         const result = await this.refreshToken();
-        defaultHeaders.authorization = result.accessToken;
+        if (result.success)
+          defaultHeaders.authorization = result.accessToken;
       } catch (error) {
         console.error(error);
       }
@@ -99,7 +113,7 @@ export class Api {
           headers: defaultHeaders,
         });
 
-        return checkResponse<T>(response);
+        return checkResponse.http<T>(response);
       }
 
       const response = await fetch(url, {
@@ -108,7 +122,7 @@ export class Api {
         body: JSON.stringify(params.data),
       });
 
-      return checkResponse<T>(response);
+      return checkResponse.http<T>(response);
     } catch (error) {
       return Promise.reject({ error });
     }

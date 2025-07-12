@@ -23,7 +23,8 @@
 			"@pages/*": ["./src/pages/*"],
 			"@components/*": ["./src/components/*"],
 			"@shared/*": ["./src/shared/*"]
-		}
+		},
+		"typeRoots": ["@types", "./node_modules/@types/*"],
 	},
 	"outDir": "./dist/",
 	"include": ["src/**/*"]

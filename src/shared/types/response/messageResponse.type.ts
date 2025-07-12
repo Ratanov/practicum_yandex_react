@@ -1,4 +1,8 @@
-export type TMessageResponse = {
-  success: boolean;
-  message: string;
-};
+import { TBaseError } from "../baseError.type";
+
+export type TMessageResponse =
+  | {
+      success: true;
+      message: string;
+    }
+  | TBaseError;

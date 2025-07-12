@@ -1,0 +1,9 @@
+.feed__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-grow: 1;
+  gap: 16px;
+  padding-right: 8px;
+  overflow: auto;
+}

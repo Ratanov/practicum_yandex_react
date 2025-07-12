@@ -1,0 +1,9 @@
+.orders {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  flex-grow: 1;
+  gap: 16px;
+  padding-right: 8px;
+  overflow: auto;
+}
