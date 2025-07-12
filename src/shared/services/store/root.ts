@@ -5,6 +5,7 @@ import selectedIngredientsReducer from '../reducers/selectedIngredientsSlice';
 import userReducer from '../reducers/userSlice';
 import ingredientsModalReducer from '../reducers/modalSlice';
 import passwordReducer from '../reducers/passwordSlice';
+import feedReducer from '../reducers/feedSlice';
 
 const rootReducer = combineReducers({
   ingredients: ingredientsReducer,
@@ -13,6 +14,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   ingredientsModal: ingredientsModalReducer,
   password: passwordReducer,
+  feeds: feedReducer,
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;

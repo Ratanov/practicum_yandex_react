@@ -17,3 +17,6 @@ lerna-debug.log*
 
 build
 dist
+
+package-lock.json
+*.lock

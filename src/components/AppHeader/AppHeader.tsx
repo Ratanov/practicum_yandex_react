@@ -12,13 +12,13 @@ import classes from './appHeader.module.css';
 
 enum EHeaderButton {
   CONSTRUCTOR = 'Конструктор',
-  ORDERS = 'Лента заказов',
+  FEED = 'Лента заказов',
   PROFILE = 'Личный кабинет',
 }
 
 const paths = {
   '/': EHeaderButton.CONSTRUCTOR,
-  '/orders': EHeaderButton.ORDERS,
+  '/feed': EHeaderButton.FEED,
   '/profile': EHeaderButton.PROFILE,
 };
 
@@ -32,8 +32,8 @@ export const AppHeader = () => {
       return paths['/'];
     }
 
-    if (pathname.startsWith('/orders')) {
-      return paths['/orders'];
+    if (pathname.startsWith('/feed')) {
+      return paths['/feed'];
     }
 
     if (pathname.startsWith('/profile')) {
@@ -60,10 +60,10 @@ export const AppHeader = () => {
             </li>
             <li className={classes['header__item']}>
               <HeaderButton
-                isActive={EHeaderButton.ORDERS === activeButton}
+                isActive={EHeaderButton.FEED === activeButton}
                 Icon={ListIcon}
-                title={EHeaderButton.ORDERS}
-                route='/orders'
+                title={EHeaderButton.FEED}
+                route='/feed'
               />
             </li>
           </div>
