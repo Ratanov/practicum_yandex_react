@@ -1,7 +1,7 @@
 import { selectors, userLogin } from '../support/constants';
 import user from '../fixtures/user.json';
 
-describe('Создание заказа. Авторизация. Dыбор ингредиентов Drag-and-drop. Отправка и проверка заказа', () => {
+describe('Создание заказа. Авторизация. Выбор ингредиентов Drag-and-drop. Отправка и проверка заказа', () => {
   beforeEach(() => {
     cy.intercept('POST', 'api/auth/login', { fixture: 'user.json' }).as(
       'login'
