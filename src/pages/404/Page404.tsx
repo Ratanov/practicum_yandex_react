@@ -6,7 +6,6 @@ import styles from "./page404.module.css";
 
 export const Page404: FC = () => {
   const navigate = useNavigate();
-
   const handleNavigateHome = () => {
     navigate('/');
   };
