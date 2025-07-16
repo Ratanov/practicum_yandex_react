@@ -6,7 +6,6 @@ const path = require('path'); //для того чтобы превратить 
 const webpack = require('webpack');
 
 const production = process.env.NODE_ENV === 'production';
-const publicPath = production ? '/practicum_yandex_react/' : '/';
 
 module.exports = {
 	entry: path.resolve(__dirname, '..', './src/index.tsx'), //точка входа в наше приложение содержит абсолютный путь к index.ts
