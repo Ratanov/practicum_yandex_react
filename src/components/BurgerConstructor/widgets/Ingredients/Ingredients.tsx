@@ -33,14 +33,15 @@ export const Ingredients: FC = () => {
           classes.ingredients,
           classes['ingredients_empty'],
           'text text_type_main-default'
-        )}>
+        )}
+        data-cy='order-inner-ingredients'>
         Начинка или соус не выбраны
       </div>
     );
   }
 
   return (
-    <ul className={classes.ingredients}>
+    <ul className={classes.ingredients} data-cy='order-inner-ingredients'>
       {selectedIngredients.map((item, index) => (
         <Ingredient
           key={item.__key}

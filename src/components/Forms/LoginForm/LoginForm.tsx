@@ -2,7 +2,11 @@ import type { ComponentProps, FC, FormEventHandler } from 'react';
 import { useAppDispatch } from '@shared/services/hooks';
 import { Input } from '@ya.praktikum/react-developer-burger-ui-components';
 import { FormFooter, FormTitle, PrimaryButton } from '../widgets';
-import { useForm, useEditableInput, useUserRedirect } from '@shared/services/hooks';
+import {
+  useForm,
+  useEditableInput,
+  useUserRedirect,
+} from '@shared/services/hooks';
 import { loginUser } from '@shared/services/reducers';
 import styles from '../forms.module.css';
 
@@ -44,6 +48,7 @@ export const LoginForm: FC = () => {
           value={formState.email}
           onChange={handleInputChange}
           placeholder='E-mail'
+          data-cy='login-form-email'
         />
         <Input
           type={inputState.type}
@@ -53,6 +58,7 @@ export const LoginForm: FC = () => {
           onIconClick={toggleEditMode}
           onChange={handleInputChange}
           placeholder='Пароль'
+          data-cy='login-form-password'
         />
         <PrimaryButton text='Войти' />
       </div>

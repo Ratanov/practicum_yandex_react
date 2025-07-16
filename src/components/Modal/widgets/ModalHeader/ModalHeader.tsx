@@ -15,7 +15,11 @@ export const ModalHeader: FC<Pick<TModalProps, 'onClose' | 'title'>> = ({
         title ? classes.header_justified : classes.header_end
       )}>
       {title && <span className='text text_type_main-large'>{title}</span>}
-      <button type='button' onClick={onClose} className={classes.header__close}>
+      <button
+        type='button'
+        onClick={onClose}
+        className={classes.header__close}
+        data-cy='modal-close'>
         <CloseIcon type='primary' />
       </button>
     </div>

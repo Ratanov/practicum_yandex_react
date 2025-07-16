@@ -14,7 +14,8 @@ export const ModalWrapper: FC<IModalWrapperProps> = ({
     <div
       className={classNames(classes.wrapper, {
         [classes.wrapper_visible]: isVisible,
-      })}>
+      })}
+      data-cy='modal-content-wrapper'>
       {children}
     </div>
   );

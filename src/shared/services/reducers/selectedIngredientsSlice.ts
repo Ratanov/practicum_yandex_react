@@ -3,18 +3,18 @@ import { v4 as uuidv4 } from 'uuid';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { TIngredient, TSelectedIngredients } from '@shared/types';
 
-interface ISliceSelectedIngredients {
+export interface ISliceSelectedIngredients {
   selectedIngredients: Array<TSelectedIngredients>;
   selectedBun: TIngredient | null;
   viewedIngredient: TIngredient | null;
 }
 
-interface ISelectedIngredientSortAction {
+export interface ISelectedIngredientSortAction {
   fromIndex: number;
   toIndex: number;
 }
 
-const initialState: ISliceSelectedIngredients = {
+export const initialState: ISliceSelectedIngredients = {
   selectedBun: null,
   selectedIngredients: [],
   viewedIngredient: null,

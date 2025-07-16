@@ -23,10 +23,15 @@ export const IngredientsCategoryGroup = memo(
             )}>
             {titles[titleKey]}
           </h3>
-          <ul className={classes.category__list}>
+          <ul
+            className={classes.category__list}
+            data-cy={`burger-ingredients-${titleKey}`}>
             {items?.length ? (
               items.map((item) => (
-                <li className={classes.category__item} key={item._id}>
+                <li
+                  key={item._id}
+                  className={classes.category__item}
+                  data-cy={`burger-ingredients-item-${titleKey}`}>
                   <IngredientCard ingredient={item} />
                 </li>
               ))

@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "accessToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NzZjYTc5NWE1NGRmMDAxYjZkZTk2ZCIsImlhdCI6MTc1MjYxODE5MywiZXhwIjoxNzUyNjE5MzkzfQ.6i1iUd5hK4rLE2Xjo3I0G-nmUBXoiIr0ddqhKTSyRjE",
+  "refreshToken": "a0c563fa2a11b6d911006b9573b25152a9b86b15b217edd7d7c89b97d34b762b58b730117ad947cd",
+  "user": {
+    "email": "oleg@ratanov.pro",
+    "name": "test"
+  }
+}

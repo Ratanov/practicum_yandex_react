@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TIngredient } from '@shared/types';
 
-interface IIngredientModalState {
+export interface IIngredientModalState {
   ingredient: TIngredient | null;
   isOpen: boolean;
 }
 
-const initialState: IIngredientModalState = {
+export const initialState: IIngredientModalState = {
   ingredient: null,
   isOpen: false,
 };

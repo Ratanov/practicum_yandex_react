@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { passwordApi } from '@shared/api';
 
-interface IPasswordState {
+export interface IPasswordState {
   isMailSend: boolean;
   successReset: boolean;
 }
 
-const initialState: IPasswordState = {
+export const initialState: IPasswordState = {
   isMailSend: false,
   successReset: false,
 };
