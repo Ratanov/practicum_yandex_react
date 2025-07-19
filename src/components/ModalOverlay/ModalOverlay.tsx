@@ -7,7 +7,10 @@ interface IModalOverlayProps extends Pick<TModalProps, 'onClose'> {
   isVisible: boolean;
 }
 
-export const ModalOverlay: FC<IModalOverlayProps> = ({ onClose, isVisible }) => {
+export const ModalOverlay: FC<IModalOverlayProps> = ({
+  onClose,
+  isVisible,
+}) => {
   const handleClick: MouseEventHandler<HTMLDivElement> = useCallback(
     (event) => {
       event.preventDefault();
@@ -38,7 +41,7 @@ export const ModalOverlay: FC<IModalOverlayProps> = ({ onClose, isVisible }) => 
         [classes.overlay_visible]: isVisible,
       })}
       onClick={handleClick}
-      data-testid='modal-overlay'
+      data-cy='modal-overlay'
     />
   );
 };

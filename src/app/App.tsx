@@ -1,6 +1,6 @@
 import { FC, useEffect, useLayoutEffect } from 'react';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
   useLocation,
@@ -111,7 +111,7 @@ const AppContent: FC = () => {
 
 export const App: FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <DndProvider backend={HTML5Backend}>
           <div className={styles.app}>
@@ -119,6 +119,6 @@ export const App: FC = () => {
           </div>
         </DndProvider>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };

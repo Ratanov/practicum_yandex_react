@@ -3,7 +3,7 @@ import { ingredientsApi } from '@shared/api';
 import { TOrderResponse } from '@shared/types';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-interface IOrderState {
+export interface IOrderState {
   isLoading: boolean;
   orderItems: Array<string>;
   error: string | null;
@@ -11,7 +11,7 @@ interface IOrderState {
   number: number | null | undefined;
 }
 
-const initialState: IOrderState = {
+export const initialState: IOrderState = {
   isLoading: false,
   name: null,
   error: null,

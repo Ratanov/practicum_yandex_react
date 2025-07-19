@@ -3,6 +3,6 @@ module.exports = {
 	devtool: false,
 	output: {
 		filename: '[name].bundle.js',
-		publicPath: '/'
+		publicPath: '/practicum_yandex_react/'
 	},
 };

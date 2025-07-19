@@ -58,14 +58,16 @@ export const Bun: FC<IBunProps> = ({ orientation }) => {
   }
 
   return (
-    <ConstructorElement
-      type={orientation}
-      price={selectedBun.price}
-      text={bunTitle}
-      thumbnail={selectedBun.image}
-      extraClass={classes.bun}
-      isLocked
-      handleClose={handleClose}
-    />
+    <div data-cy={`order-bun-${orientation}`}>
+      <ConstructorElement
+        type={orientation}
+        price={selectedBun.price}
+        text={bunTitle}
+        thumbnail={selectedBun.image}
+        extraClass={classes.bun}
+        isLocked
+        handleClose={handleClose}
+      />
+    </div>
   );
 };

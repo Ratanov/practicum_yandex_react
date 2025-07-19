@@ -1,14 +1,14 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TFeedOrderItem } from '@shared/types';
 
-interface ISliceFeed {
+export interface ISliceFeed {
   total: number | null;
   totalToday: number | null;
   status: 'connected' | 'disconnected' | 'connecting';
   orders: Array<TFeedOrderItem>;
 }
 
-const initialState: ISliceFeed = {
+export const initialState: ISliceFeed = {
   orders: [],
   status: 'disconnected',
   total: null,

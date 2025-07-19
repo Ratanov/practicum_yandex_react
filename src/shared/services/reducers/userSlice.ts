@@ -4,7 +4,7 @@ import { TAuthResponse, TFeedOrderItem, TUpdateResponse } from '@shared/types';
 import { setCookie } from '@shared/utils/cookie';
 import { refreshToken } from '@shared/utils';
 
-interface IUserState {
+export interface IUserState {
   user: TAuthResponse['user'] | null;
   initLoading: boolean;
   isAuth: boolean;
@@ -13,7 +13,7 @@ interface IUserState {
   wsStatus: 'connected' | 'disconnected' | 'connecting';
 }
 
-const initialState: IUserState = {
+export const initialState: IUserState = {
   isAuth: false,
   user: null,
   initLoading: true,

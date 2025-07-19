@@ -70,11 +70,7 @@ export const ConstructorTotal: FC = () => {
     <>
       {modalState && (
         <Modal title={name || ''} onClose={() => setModalState(false)}>
-          {!error && number ? (
-            <OrderDetails orderNumber={number} />
-          ) : (
-            error
-          )}
+          {!error && number ? <OrderDetails orderNumber={number} /> : error}
         </Modal>
       )}
       <form onSubmit={formSubmit} className={classes.order}>
@@ -86,7 +82,10 @@ export const ConstructorTotal: FC = () => {
           {totalPrice}
           <CurrencyIcon type='primary' />
         </span>
-        <Button htmlType='submit' disabled={orderItems.length === 0}>
+        <Button
+          htmlType='submit'
+          disabled={orderItems.length === 0}
+          data-cy='order-submit-button'>
           {isLoading ? 'Оформление заказа...' : 'Оформить заказ'}
         </Button>
       </form>

@@ -43,7 +43,10 @@ export const BurgerConstructor: FC = () => {
 
   return (
     <section className={classes['constructor']}>
-      <article ref={drop} className={classes['constructor__content']}>
+      <article
+        ref={drop}
+        className={classes['constructor__content']}
+        data-cy='order-drop-area'>
         <Bun orientation='top' />
         <Ingredients />
         <Bun orientation='bottom' />

@@ -3,14 +3,14 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { ingredientsApi } from '@shared/api';
 import { TApiResponse, TIngredient } from '@shared/types';
 
-interface IIngredientsState {
+export interface IIngredientsState {
   isLoading: boolean;
   ingredients: Array<TIngredient>;
   ingredientsHash: Record<string, TIngredient>;
   error: string | null;
 }
 
-const initialState: IIngredientsState = {
+export const initialState: IIngredientsState = {
   isLoading: false,
   ingredients: [],
   ingredientsHash: {},

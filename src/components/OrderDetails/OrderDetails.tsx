@@ -6,7 +6,9 @@ export const OrderDetails: FC<{ orderNumber: number }> = ({ orderNumber }) => {
   return (
     <div className={classes.order}>
       <div className={classes.order__header}>
-        <h2 className='text text_type_digits-large'>{orderNumber}</h2>
+        <h2 className='text text_type_digits-large' data-cy='order-number'>
+          {orderNumber}
+        </h2>
         <p className='text text_type_main-medium'>идентификатор заказа</p>
       </div>
       <img src={donePng} alt='Иконка готового заказа' />
